@@ -11,13 +11,13 @@
             Capture<br/>The Moment.
         </h1>
         <p class="text-xl md:text-2xl font-medium max-w-2xl border-l-4 border-black pl-6 py-2">
-            Peralatan profesional untuk visi tanpa batas. Jelajahi koleksi gear premium kami dan wujudkan karya terbaikmu hari ini.
+            Professional gear for limitless vision. Explore our premium collection and bring your best work to life today.
         </p>
     </div>
 </div>
 
 <div class="flex justify-between items-end mb-10 border-b-2 border-black pb-4">
-    <h2 class="text-4xl font-bold uppercase tracking-tight">Katalog Gear</h2>
+    <h2 class="text-4xl font-bold uppercase tracking-tight">Catalog</h2>
     <span class="font-bold text-xl uppercase">{{ count($cameras) }} Item</span>
 </div>
 
@@ -28,7 +28,7 @@
         <div class="relative border-b-4 border-black h-64 overflow-hidden bg-gray-100">
             @if($camera->status != 'tersedia')
                 <div class="absolute top-4 right-4 z-20 bg-black text-white px-4 py-1 text-sm font-bold uppercase tracking-wider transform rotate-3 shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] border border-white">
-                    Sedang Disewa
+                    On Rent
                 </div>
                 <!-- Overlay grayscale for unavailable -->
                 <div class="absolute inset-0 bg-white/40 z-10 backdrop-grayscale"></div>
@@ -56,7 +56,7 @@
             
             <div class="border-t-2 border-black pt-4 mt-auto">
                 <div class="flex items-center justify-between mb-4">
-                    <span class="text-sm font-bold uppercase tracking-widest">Tarif Sewa</span>
+                    <span class="text-sm font-bold uppercase tracking-widest">Rental Price</span>
                     <span class="text-2xl font-black">Rp {{ number_format($camera->price_per_day, 0, ',', '.') }}</span>
                 </div>
 
@@ -64,17 +64,17 @@
                     @if(auth()->user()->role == 'customer')
                         @if($camera->status == 'tersedia')
                             <button onclick="document.getElementById('modal-{{ $camera->id }}').classList.remove('hidden')" class="w-full border-2 border-black bg-black text-white text-lg font-bold uppercase tracking-widest py-3 hover:bg-white hover:text-black transition-colors duration-200">
-                                Sewa Sekarang
+                                Rent Now
                             </button>
                         @else
                             <button disabled class="w-full border-2 border-gray-400 bg-gray-100 text-gray-400 text-lg font-bold uppercase tracking-widest py-3 cursor-not-allowed">
-                                Tidak Tersedia
+                                Not Available
                             </button>
                         @endif
                     @endif
                 @else
                     <a href="{{ route('login') }}" class="block text-center w-full border-2 border-black bg-white text-black text-lg font-bold uppercase tracking-widest py-3 hover:bg-black hover:text-white transition-colors duration-200">
-                        Login Untuk Sewa
+                        Login to Rent
                     </a>
                 @endauth
             </div>
@@ -104,17 +104,17 @@
                     
                     <div class="px-8 pt-10 pb-8 border-b-4 border-black">
                         <h3 class="text-3xl font-black uppercase tracking-tight mb-2" id="modal-title">
-                            Formulir Sewa
+                            Rental Form
                         </h3>
                         <p class="text-xl font-bold border-b-2 border-black inline-block mb-8 pb-1">{{ $camera->name }}</p>
                         
                         <div class="space-y-6">
                             <div>
-                                <label class="block text-sm font-bold uppercase tracking-widest mb-2">Tanggal Mulai</label>
+                                <label class="block text-sm font-bold uppercase tracking-widest mb-2">Start Date</label>
                                 <input type="date" name="start_date" required class="block w-full border-2 border-black p-3 font-medium focus:outline-none focus:ring-0 focus:border-black bg-gray-50">
                             </div>
                             <div>
-                                <label class="block text-sm font-bold uppercase tracking-widest mb-2">Tanggal Selesai</label>
+                                <label class="block text-sm font-bold uppercase tracking-widest mb-2">End Date</label>
                                 <input type="date" name="end_date" required class="block w-full border-2 border-black p-3 font-medium focus:outline-none focus:ring-0 focus:border-black bg-gray-50">
                             </div>
                         </div>
@@ -140,12 +140,12 @@
 <div class="mt-32 border-4 border-black p-12 bg-black text-white flex flex-col md:flex-row justify-between items-center relative overflow-hidden">
     <div class="absolute -right-10 -top-10 text-9xl opacity-10 font-black">SUPPORT</div>
     <div class="relative z-10 max-w-2xl">
-        <h2 class="text-4xl md:text-5xl font-black uppercase mb-4">Butuh Bantuan?</h2>
-        <p class="text-lg md:text-xl font-medium text-gray-300">Tim profesional kami siap membantu Anda memilih gear yang tepat untuk proyek Anda selanjutnya.</p>
+        <h2 class="text-4xl md:text-5xl font-black uppercase mb-4">Need Help?</h2>
+        <p class="text-lg md:text-xl font-medium text-gray-300">Our professional team is ready to help you choose the right gear for your next project.</p>
     </div>
     <div class="mt-8 md:mt-0 relative z-10">
         <a href="#" class="inline-block border-2 border-white bg-white text-black font-bold uppercase tracking-widest py-4 px-10 hover:bg-black hover:text-white transition-colors duration-300">
-            Hubungi Kami
+            Contact Us
         </a>
     </div>
 </div>

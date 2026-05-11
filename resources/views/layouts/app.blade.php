@@ -39,13 +39,13 @@
 
                 <!-- Navigation Links -->
                 <div class="flex items-center space-x-8">
-                    <a href="/" class="text-sm font-semibold tracking-widest uppercase hover:underline decoration-2 underline-offset-4">Katalog</a>
+                    <a href="/" class="text-sm font-semibold tracking-widest uppercase hover:underline decoration-2 underline-offset-4">Catalog</a>
                     
                     @auth
                         @if(auth()->user()->role == 'admin')
-                            <a href="/admin/dashboard" class="text-sm font-semibold tracking-widest uppercase hover:underline decoration-2 underline-offset-4">Dashboard Admin</a>
+                            <a href="/admin/dashboard" class="text-sm font-semibold tracking-widest uppercase hover:underline decoration-2 underline-offset-4">Admin Dashboard</a>
                         @else
-                            <a href="/dashboard" class="text-sm font-semibold tracking-widest uppercase hover:underline decoration-2 underline-offset-4">Pesanan Saya</a>
+                            <a href="/dashboard" class="text-sm font-semibold tracking-widest uppercase hover:underline decoration-2 underline-offset-4">My Orders</a>
                         @endif
                         
                         <div class="h-6 w-px bg-black"></div>
@@ -56,15 +56,15 @@
                         
                         <form action="/logout" method="POST" class="inline">
                             @csrf
-                            <button type="submit" class="border-2 border-black bg-black text-white px-5 py-2 text-sm font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-colors duration-200">Keluar</button>
+                            <button type="submit" class="border-2 border-black bg-black text-white px-5 py-2 text-sm font-bold uppercase tracking-widest hover:bg-red-500 hover:text-black transition-colors duration-200">Logout</button>
                         </form>
                     @else
                         <div class="h-6 w-px bg-black hidden sm:block"></div>
                         @if(!request()->is('login'))
-                            <a href="/login" class="text-sm font-semibold tracking-widest uppercase hover:underline decoration-2 underline-offset-4">Masuk</a>
+                            <a href="/login" class="text-sm font-semibold tracking-widest uppercase hover:underline decoration-2 underline-offset-4">Login</a>
                         @endif
                         @if(!request()->is('register'))
-                            <a href="/register" class="border-2 border-black bg-black text-white px-5 py-2 text-sm font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-colors duration-200">Daftar</a>
+                            <a href="/register" class="border-2 border-black bg-black text-white px-5 py-2 text-sm font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-colors duration-200">Register</a>
                         @endif
                     @endauth
                 </div>
@@ -89,7 +89,7 @@
 
     <footer class="border-t-2 border-black mt-20 py-12">
         <div class="max-w-7xl mx-auto px-4 text-center">
-            <p class="font-medium tracking-widest uppercase text-sm">&copy; {{ date('Y') }} LENSRENT. Hak Cipta Dilindungi.</p>
+            <p class="font-medium tracking-widest uppercase text-sm">&copy; {{ date('Y') }} LENSRENT.</p>
         </div>
     </footer>
 </body>

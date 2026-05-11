@@ -2,9 +2,9 @@
 
 @section('content')
 <div class="mb-10 border-b-4 border-black pb-4 flex justify-between items-end">
-    <h2 class="text-4xl font-black uppercase tracking-tight">Edit Kamera</h2>
+    <h2 class="text-4xl font-black uppercase tracking-tight">Edit Camera</h2>
     <a href="{{ route('cameras.index') }}" class="text-sm font-bold uppercase tracking-widest hover:bg-black hover:text-white border-2 border-black px-4 py-2 transition-colors">
-        &larr; Kembali
+        &larr; Back
     </a>
 </div>
 
@@ -14,10 +14,10 @@
         @method('PUT')
         
         <div>
-            <label class="block text-sm font-bold uppercase tracking-widest mb-2">Kategori</label>
+            <label class="block text-sm font-bold uppercase tracking-widest mb-2">Category</label>
             <div class="relative">
                 <select name="category_id" required class="block w-full border-2 border-black p-3 font-medium focus:outline-none focus:ring-0 focus:border-black bg-white appearance-none cursor-pointer">
-                    <option value="">-- Pilih --</option>
+                    <option value="">-- Category --</option>
                     @foreach($categories as $category)
                         <option value="{{ $category->id }}" {{ $camera->category_id == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
                     @endforeach
@@ -29,17 +29,17 @@
         </div>
         
         <div>
-            <label class="block text-sm font-bold uppercase tracking-widest mb-2">Nama Kamera</label>
+            <label class="block text-sm font-bold uppercase tracking-widest mb-2">Camera Name</label>
             <input type="text" name="name" value="{{ $camera->name }}" required class="block w-full border-2 border-black p-3 font-medium focus:outline-none focus:ring-0 focus:border-black bg-gray-50">
         </div>
         
         <div>
-            <label class="block text-sm font-bold uppercase tracking-widest mb-2">Merk</label>
+            <label class="block text-sm font-bold uppercase tracking-widest mb-2">Brand</label>
             <input type="text" name="brand" value="{{ $camera->brand }}" required class="block w-full border-2 border-black p-3 font-medium focus:outline-none focus:ring-0 focus:border-black bg-gray-50">
         </div>
         
         <div>
-            <label class="block text-sm font-bold uppercase tracking-widest mb-2">Tarif Sewa/Hari</label>
+            <label class="block text-sm font-bold uppercase tracking-widest mb-2">Rental Fee/Day</label>
             <div class="flex">
                 <span class="inline-flex items-center px-4 border-2 border-r-0 border-black bg-black text-white font-bold">Rp</span>
                 <input type="number" name="price_per_day" value="{{ $camera->price_per_day }}" required class="block w-full border-2 border-black p-3 font-medium focus:outline-none focus:ring-0 focus:border-black bg-gray-50">
@@ -47,12 +47,12 @@
         </div>
         
         <div>
-            <label class="block text-sm font-bold uppercase tracking-widest mb-2">Deskripsi</label>
+            <label class="block text-sm font-bold uppercase tracking-widest mb-2">Description</label>
             <textarea name="description" rows="3" class="block w-full border-2 border-black p-3 font-medium focus:outline-none focus:ring-0 focus:border-black bg-gray-50">{{ $camera->description }}</textarea>
         </div>
         
         <button type="submit" class="w-full border-2 border-black bg-black text-white py-4 text-sm font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-colors duration-200 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1">
-            Simpan Perubahan
+            Save Data
         </button>
     </form>
 </div>
