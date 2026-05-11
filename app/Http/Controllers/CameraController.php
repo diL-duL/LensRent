@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Models\Camera;
 use App\Models\Category;
+use App\Ai\Agents\CameraAgent;
+use Laravel\Ai\Enums\Lab;
 
 class CameraController extends Controller
 {
@@ -53,7 +55,17 @@ class CameraController extends Controller
     public function show(Camera $camera)
     {
         $camera->load('category');
-        return view('cameras.show', compact('camera'));
+
+        $categoryName = $camera->category->name ?? 'Umum';
+
+        $response = CameraAgent::make()->prompt(
+            "Jelaskan secara singkat tentang kategori kamera '{$categoryName}'. Apa kelebihan, kekurangan, dan untuk siapa kategori ini cocok? Jawab dalam bahasa Indonesia.",
+            provider: Lab::Gemini
+        );
+
+        $aiInsight = $response->text;
+
+        return view('cameras.show', compact('camera', 'aiInsight'));
     }
 
     public function destroy(Camera $camera)
