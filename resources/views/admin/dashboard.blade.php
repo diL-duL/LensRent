@@ -37,7 +37,8 @@
 </div>
 
 @if($lateRentals->count() > 0)
-    <div class="border-4 border-black bg-red-500 text-white p-6 mb-12 relative shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transform -rotate-1">
+    <!-- <div class="border-4 border-black bg-red-500 text-white p-6 mb-12 relative shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:translate-x-1 hover:translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)] transition-all transform -rotate-1"> -->
+    <div class="border-4 border-black bg-red-500 text-white p-6 mb-12 relative shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:translate-x-1 hover:translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)] transition-all">
         <div class="flex items-start">
             <svg class="h-10 w-10 text-black mt-1 bg-white p-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="miter" stroke-width="3" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
             <div class="ml-6">
