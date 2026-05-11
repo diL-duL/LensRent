@@ -50,6 +50,12 @@ class CameraController extends Controller
         return redirect()->route('cameras.index')->with('success', 'Kamera berhasil diperbarui.');
     }
 
+    public function show(Camera $camera)
+    {
+        $camera->load('category');
+        return view('cameras.show', compact('camera'));
+    }
+
     public function destroy(Camera $camera)
     {
         $camera->delete();
