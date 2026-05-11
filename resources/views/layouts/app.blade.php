@@ -50,9 +50,9 @@
                         
                         <div class="h-6 w-px bg-black"></div>
                         
-                        <span class="text-sm font-semibold tracking-widest uppercase">
+                        <a href="{{ route('profile.edit') }}" class="text-sm font-semibold tracking-widest uppercase hover:underline decoration-2 underline-offset-4">
                             {{ auth()->user()->name }}
-                        </span>
+                        </a>
                         
                         <form action="/logout" method="POST" class="inline">
                             @csrf

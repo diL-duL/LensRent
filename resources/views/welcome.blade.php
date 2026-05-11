@@ -61,6 +61,9 @@
                 </div>
 
                 @auth
+                    <a href="{{ route('cameras.show', $camera->id) }}" class="block text-center w-full border-2 border-black bg-white text-black text-sm font-bold uppercase tracking-widest py-3 hover:bg-gray-100 transition-colors duration-200 mb-2">
+                        View Detail &rarr;
+                    </a>
                     @if(auth()->user()->role == 'customer')
                         @if($camera->status == 'tersedia')
                             <button onclick="document.getElementById('modal-{{ $camera->id }}').classList.remove('hidden')" class="w-full border-2 border-black bg-black text-white text-lg font-bold uppercase tracking-widest py-3 hover:bg-white hover:text-black transition-colors duration-200">
