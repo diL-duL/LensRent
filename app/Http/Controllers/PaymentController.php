@@ -12,8 +12,6 @@ class PaymentController extends Controller
 {
     public function upload(Request $request, Rental $rental)
     {
-        \Illuminate\Support\Facades\Gate::authorize('manage-rental', $rental);
-
         $request->validate([
             'payment_proof' => 'required|image|mimes:jpeg,png,jpg|max:2048',
         ]);
