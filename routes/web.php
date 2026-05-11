@@ -7,6 +7,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CameraController;
 use App\Http\Controllers\RentalController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\ProfileController;
 use App\Models\Camera;
 
 Route::get('/', function () {
@@ -24,6 +25,16 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'customerDashboard'])->name('dashboard');
     Route::post('/rentals', [RentalController::class, 'store'])->name('rentals.store');
     Route::post('/rentals/{rental}/payment', [PaymentController::class, 'upload'])->name('payments.upload');
+
+    // Camera detail page (authenticated users only)
+    Route::get('/cameras/{camera}', [CameraController::class, 'show'])->name('cameras.show');
+
+    // Profile routes (protected by 'update-profile' gate)
+    Route::middleware('can:update-profile')->group(function () {
+        Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+        Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
+        Route::put('/profile/password', [ProfileController::class, 'updatePassword'])->name('profile.password');
+    });
 });
 
 Route::middleware(['auth', 'can:admin'])->prefix('admin')->group(function () {
@@ -35,3 +46,4 @@ Route::middleware(['auth', 'can:admin'])->prefix('admin')->group(function () {
     Route::post('/payments/{payment}/verify', [PaymentController::class, 'verify'])->name('admin.payments.verify');
     Route::post('/rentals/{rental}/return', [RentalController::class, 'returnCamera'])->name('admin.rentals.return');
 });
+
