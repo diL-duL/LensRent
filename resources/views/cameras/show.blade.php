@@ -9,7 +9,7 @@
 
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
     <!-- Camera Image -->
-    <div class="border-4 border-black bg-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] overflow-hidden">
+    <!-- <div class="border-4 border-black bg-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] overflow-hidden">
         <div class="relative h-96 lg:h-[500px] bg-gray-100">
             @if($camera->status != 'tersedia')
                 <div class="absolute top-6 right-6 z-20 bg-black text-white px-6 py-2 text-sm font-bold uppercase tracking-wider transform rotate-3 shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] border border-white">
@@ -30,7 +30,7 @@
                 </div>
             @endif
         </div>
-    </div>
+    </div> -->
 
     <!-- Camera Info -->
     <div class="flex flex-col">
@@ -95,6 +95,30 @@
             @endif
         </div>
     </div>
+    <!-- AI Insight Section -->
+    @if(!empty($aiInsight))
+    <div class="mt-12 border-4 border-black bg-white p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] relative overflow-hidden">
+        <div class="absolute -right-6 -top-6 text-8xl opacity-5 font-black select-none transform rotate-12">AI</div>
+        
+        <div class="flex items-center gap-3 mb-6 border-b-4 border-black pb-4">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+            </svg>
+            <h2 class="text-2xl font-black uppercase tracking-tight">Optic's Category Insight</h2>
+            <span class="border-2 border-black bg-black text-white px-3 py-1 text-xs font-bold uppercase tracking-widest ml-auto">
+                {{ $camera->category->name ?? 'Umum' }}
+            </span>
+        </div>
+    
+        <div class="prose prose-lg max-w-none font-medium leading-relaxed
+                    prose-headings:font-black prose-headings:uppercase prose-headings:tracking-tight
+                    prose-strong:font-black
+                    prose-ul:list-disc prose-ul:pl-6
+                    prose-li:my-1">
+            {!! Str::markdown($aiInsight) !!}
+        </div>
+    </div>
+    @endif
 </div>
 
 <!-- Rental Modal -->
