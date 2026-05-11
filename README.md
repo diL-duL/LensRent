@@ -1,6 +1,6 @@
 # LensRent - Camera Rental Management System 📷
 
-LensRent is a modern, full-featured web application built with Laravel that streamlines the process of renting cameras and gear. It is designed with a striking high-contrast "Black and White" (neo-brutalist) UI aesthetic.
+LensRent is a modern, full-featured web application built with Laravel that streamlines the process of renting cameras and gear. It is designed with a striking high-contrast "Black and White" (neo-brutalist) UI aesthetic and integrates an **AI-powered camera assistant** for intelligent category insights.
 
 ## ✨ Key Features
 
@@ -8,20 +8,23 @@ LensRent is a modern, full-featured web application built with Laravel that stre
   - **Admin:** Manages camera inventory, categories, verifies customer payments, tracks rental statuses, and processes returns.
   - **Customer:** Browses the camera catalog, makes reservations, views rental history, and uploads payment proofs.
 - **Complete Inventory Management:** Full CRUD (Create, Read, Update, Delete) functionality for both Camera Categories and individual Camera units.
+- **Camera Detail Page:** Authenticated users can view a dedicated detail page for each camera, showing full specifications, status, and pricing.
+- **AI-Powered Category Insight:** Each camera detail page features an AI-generated explanation of the camera's category—covering pros, cons, and ideal use cases—powered by the `CameraAgent` using the `laravel/ai` SDK with Gemini.
 - **Robust Rental Workflow:**
   - Customers select rental duration, and the system automatically calculates the total fee.
   - Integration with a payment proof upload system.
   - Admins can approve or reject payments. Rejections automatically update the rental status and free up the camera for others.
 - **Automated Late Fines:** When processing a return, the system automatically detects if it's past the due date and calculates appropriate late fees based on the camera's daily rate.
+- **User Profile Management:** Authenticated users can update their display name and change their password. Protected by the `update-profile` Gate.
 - **Striking Aesthetic:** A fully responsive, modern neo-brutalist UI built with Tailwind CSS, featuring bold typography, heavy borders, and high-contrast interactions.
 
 ## 🛠️ Technology Stack
 
-- **Backend:** Laravel 11 (PHP)
-- **Frontend:** Blade Templating, Tailwind CSS, Alpine.js
+- **Backend:** Laravel 13 (PHP 8.3)
+- **Frontend:** Blade Templating, Tailwind CSS
 - **Database:** MySQL
-- **Authentication:** Laravel Breeze
-- **Authorization:** Laravel Gates
+- **AI:** Laravel AI SDK (`laravel/ai`) with Gemini provider
+- **Authorization:** Laravel Gates (`admin`, `update-profile`)
 
 ## 🚀 Getting Started
 
@@ -29,10 +32,11 @@ Follow these instructions to set up the project locally on your machine.
 
 ### Prerequisites
 
-- PHP >= 8.2
+- PHP >= 8.3
 - Composer
 - Node.js and NPM
 - MySQL or compatible database server
+- A Gemini API key (for the AI insight feature)
 
 ### Installation
 
@@ -53,11 +57,13 @@ Follow these instructions to set up the project locally on your machine.
    ```
 
 4. **Environment Setup:**
-   Copy the example environment file and configure your database credentials.
+   Copy the example environment file and configure your database and AI credentials.
    ```bash
    cp .env.example .env
    ```
-   *Open `.env` and update `DB_DATABASE`, `DB_USERNAME`, and `DB_PASSWORD`.*
+   Open `.env` and update:
+   - `DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD` — for database connection.
+   - `GEMINI_API_KEY` — for the AI-powered category insight feature.
 
 5. **Generate Application Key:**
    ```bash
@@ -88,6 +94,18 @@ Follow these instructions to set up the project locally on your machine.
 
 9. **Access the App:**
    Open your browser and navigate to `http://localhost:8000`.
+
+## 🤖 AI Agent — CameraAgent (Optic)
+
+The application includes a custom AI agent called **CameraAgent** located at `app/Ai/Agents/CameraAgent.php`. This agent acts as "Optic", a professional camera specialist.
+
+### How It Works
+1. When a user opens a camera detail page (`/cameras/{id}`), the controller calls the `CameraAgent`.
+2. The agent is prompted with the camera's category name and asked to explain it.
+3. The AI response (markdown) is rendered directly on the detail page under the **"Optic's Category Insight"** section.
+
+### Configuration
+The agent uses the **Gemini** provider via `Lab::Gemini`. Ensure your `.env` has a valid `GEMINI_API_KEY`.
 
 ## 👥 Default Accounts
 
