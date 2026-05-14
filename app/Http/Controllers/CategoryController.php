@@ -18,7 +18,7 @@ class CategoryController extends Controller
     {
         $request->validate(['name' => 'required']);
         Category::create($request->all());
-        return back()->with('success', 'Kategori berhasil ditambahkan.');
+        return back()->with('success', 'Category has been added successfully.');
     }
 
     public function edit(Category $category)
@@ -30,12 +30,12 @@ class CategoryController extends Controller
     {
         $request->validate(['name' => 'required']);
         $category->update($request->all());
-        return redirect()->route('categories.index')->with('success', 'Kategori berhasil diperbarui.');
+        return redirect()->route('categories.index')->with('success', 'Category has been updated successfully.');
     }
 
     public function destroy(Category $category)
     {
         $category->delete();
-        return back()->with('success', 'Kategori berhasil dihapus.');
+        return back()->with('success', 'Category has been deleted successfully.');
     }
 }
