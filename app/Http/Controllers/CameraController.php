@@ -73,4 +73,10 @@ class CameraController extends Controller
         $camera->delete();
         return back()->with('success', 'Kamera berhasil dihapus.');
     }
+
+    public function home()
+    {
+        $cameras = Camera::all();
+        return view('welcome', compact('cameras'));
+    }
 }
