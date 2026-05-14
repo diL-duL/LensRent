@@ -23,7 +23,7 @@ class ProfileController extends Controller
 
         $user->update($data);
 
-        return back()->with('success', 'Nama berhasil diperbarui.');
+        return back()->with('success', 'Name has been changed successfully.');
     }
 
     public function updatePassword(Request $request)
@@ -37,6 +37,6 @@ class ProfileController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        return back()->with('success', 'Password berhasil diperbarui.');
+        return back()->with('success', 'Password has been changed successfully.');
     }
 }
