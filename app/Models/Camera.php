@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Attributes\Fillable;
 
 class Camera extends Model
 {
-    protected $fillable = ['category_id', 'name', 'brand', 'price_per_day', 'status', 'photo', 'description'];
+    protected $fillable = ['category_id', 'name', 'brand', 'price_per_day', 'status', 'description'];
 
     public function category()
     {
