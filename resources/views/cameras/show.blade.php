@@ -8,29 +8,6 @@
 </div>
 
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-    <!-- Camera Image -->
-    <!-- <div class="border-4 border-black bg-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] overflow-hidden">
-        <div class="relative h-96 lg:h-[500px] bg-gray-100">
-            @if($camera->status != 'tersedia')
-                <div class="absolute top-6 right-6 z-20 bg-black text-white px-6 py-2 text-sm font-bold uppercase tracking-wider transform rotate-3 shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] border border-white">
-                    On Rent
-                </div>
-                <div class="absolute inset-0 bg-white/40 z-10 backdrop-grayscale"></div>
-            @endif
-
-            @if($camera->photo)
-                <img class="w-full h-full object-cover {{ $camera->status != 'tersedia' ? 'grayscale' : '' }}"
-                     src="{{ asset('storage/' . $camera->photo) }}" alt="{{ $camera->name }}">
-            @else
-                <div class="w-full h-full flex items-center justify-center text-black">
-                    <svg class="h-32 w-32 opacity-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path>
-                        <circle cx="12" cy="13" r="4"></circle>
-                    </svg>
-                </div>
-            @endif
-        </div>
-    </div> -->
 
     <!-- Camera Info -->
     <div class="flex flex-col">

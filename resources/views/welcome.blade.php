@@ -24,24 +24,6 @@
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
     @foreach($cameras as $camera)
     <div class="group border-4 border-black bg-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] transition-all duration-200 flex flex-col">
-        
-        <div class="relative border-b-4 border-black h-64 overflow-hidden bg-gray-100">
-            @if($camera->status != 'tersedia')
-                <div class="absolute top-4 right-4 z-20 bg-black text-white px-4 py-1 text-sm font-bold uppercase tracking-wider transform rotate-3 shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] border border-white">
-                    On Rent
-                </div>
-                <!-- Overlay grayscale for unavailable -->
-                <div class="absolute inset-0 bg-white/40 z-10 backdrop-grayscale"></div>
-            @endif
-
-            @if($camera->photo)
-                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 {{ $camera->status != 'tersedia' ? 'grayscale' : '' }}" src="{{ asset('storage/' . $camera->photo) }}" alt="{{ $camera->name }}">
-            @else
-                <div class="w-full h-full flex items-center justify-center text-black">
-                    <svg class="h-20 w-20 opacity-20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path></svg>
-                </div>
-            @endif
-        </div>
 
         <div class="p-6 flex flex-col flex-grow">
             <div class="flex justify-between items-start mb-2">
@@ -66,20 +48,31 @@
                     </a>
                     @if(auth()->user()->role == 'customer')
                         @if($camera->status == 'tersedia')
-                            <button onclick="document.getElementById('modal-{{ $camera->id }}').classList.remove('hidden')" class="w-full border-2 border-black bg-black text-white text-lg font-bold uppercase tracking-widest py-3 hover:bg-white hover:text-black transition-colors duration-200">
+                            <button onclick="document.getElementById('modal-{{ $camera->id }}').classList.remove('hidden')" class="w-full border-2 border-black bg-black text-white text-lg font-bold uppercase tracking-widest py-3 hover:bg-white hover:text-black transition-colors duration-200 mb-2">
                                 Rent Now
                             </button>
                         @else
-                            <button disabled class="w-full border-2 border-gray-400 bg-gray-100 text-gray-400 text-lg font-bold uppercase tracking-widest py-3 cursor-not-allowed">
+                            <button disabled class="w-full border-2 border-gray-400 bg-gray-100 text-gray-400 text-lg font-bold uppercase tracking-widest py-3 cursor-not-allowed mb-2">
                                 Not Available
                             </button>
                         @endif
                     @endif
                 @else
-                    <a href="{{ route('login') }}" class="block text-center w-full border-2 border-black bg-white text-black text-lg font-bold uppercase tracking-widest py-3 hover:bg-black hover:text-white transition-colors duration-200">
+                    <a href="{{ route('login') }}" class="block text-center w-full border-2 border-black bg-white text-black text-lg font-bold uppercase tracking-widest py-3 hover:bg-black hover:text-white transition-colors duration-200 mb-2">
                         Login to Rent
                     </a>
                 @endauth
+
+                {{-- View Image button - opens Google Images search in new tab --}}
+                <a href="https://www.google.com/search?tbm=isch&q={{ urlencode($camera->name . ' ' . $camera->brand . ' camera') }}"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="flex items-center justify-center gap-2 w-full border-2 border-black bg-white text-black text-sm font-bold uppercase tracking-widest py-3 hover:bg-black hover:text-white transition-colors duration-200 group/img">
+                    <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                    </svg>
+                    View Image
+                </a>
             </div>
         </div>
     </div>

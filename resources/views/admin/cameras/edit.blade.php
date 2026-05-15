@@ -9,7 +9,7 @@
 </div>
 
 <div class="max-w-2xl border-4 border-black bg-white p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
-    <form action="{{ route('cameras.update', $camera->id) }}" method="POST" enctype="multipart/form-data" class="space-y-6">
+    <form action="{{ route('cameras.update', $camera->id) }}" method="POST" class="space-y-6">
         @csrf
         @method('PUT')
         

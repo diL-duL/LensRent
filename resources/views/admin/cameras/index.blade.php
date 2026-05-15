@@ -13,7 +13,7 @@
     <div class="lg:col-span-1">
         <div class="border-4 border-black bg-white p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] sticky top-28">
             <h3 class="text-2xl font-black uppercase tracking-tight mb-6 border-b-4 border-black pb-2">Add New</h3>
-            <form action="{{ route('cameras.store') }}" method="POST" enctype="multipart/form-data" class="space-y-6">
+            <form action="{{ route('cameras.store') }}" method="POST" class="space-y-6">
                 @csrf
                 <div>
                     <label class="block text-sm font-bold uppercase tracking-widest mb-2">Category</label>
