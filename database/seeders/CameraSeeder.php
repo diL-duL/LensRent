@@ -21,7 +21,7 @@ class CameraSeeder extends Seeder
                 'name' => 'Canon EOS 5D Mark IV',
                 'brand' => 'Canon',
                 'price_per_day' => 250000,
-                'status' => 'tersedia',
+                'status' => 'available',
                 'description' => 'Kamera full-frame andalan para profesional.'
             ]);
         }
@@ -32,7 +32,7 @@ class CameraSeeder extends Seeder
                 'name' => 'Sony A7 III',
                 'brand' => 'Sony',
                 'price_per_day' => 300000,
-                'status' => 'disewa',
+                'status' => 'rented',
                 'description' => 'Mirrorless serbaguna dengan autofokus cepat.'
             ]);
         }
@@ -43,7 +43,7 @@ class CameraSeeder extends Seeder
                 'name' => 'GoPro Hero 11',
                 'brand' => 'GoPro',
                 'price_per_day' => 100000,
-                'status' => 'disewa', // Disesuaikan dengan seeder rental
+                'status' => 'rented',
                 'description' => 'Rekam aksimu dengan stabil dan resolusi tinggi.'
             ]);
         }

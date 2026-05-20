@@ -88,7 +88,7 @@
                                 Rp {{ number_format($camera->price_per_day, 0, ',', '.') }}
                             </td>
                             <td class="py-4 px-4">
-                                @if($camera->status == 'tersedia')
+                                @if($camera->status == 'available')
                                     <span class="border-2 border-black bg-white px-2 py-1 text-xs font-black uppercase tracking-widest">
                                         Available
                                     </span>

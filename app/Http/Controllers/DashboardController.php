@@ -25,7 +25,6 @@ class DashboardController extends Controller
             $q->where('status', 'pending');
         })->count();
 
-        // Check for late returns
         $lateRentals = Rental::where('status', 'approved')
             ->where('end_date', '<', now()->toDateString())
             ->get();

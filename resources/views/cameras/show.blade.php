@@ -40,7 +40,7 @@
         <!-- Status -->
         <div class="flex items-center gap-4 mb-8">
             <span class="text-sm font-bold uppercase tracking-widest text-gray-500">Status</span>
-            @if($camera->status == 'tersedia')
+            @if($camera->status == 'available')
                 <span class="border-2 border-black bg-white px-4 py-2 text-sm font-black uppercase tracking-widest">
                     ✓ Available
                 </span>
@@ -59,7 +59,7 @@
             </div>
 
             @if(auth()->user()->role == 'customer')
-                @if($camera->status == 'tersedia')
+                @if($camera->status == 'available')
                     <button onclick="document.getElementById('modal-rent').classList.remove('hidden')"
                             class="w-full border-2 border-black bg-black text-white text-lg font-bold uppercase tracking-widest py-4 hover:bg-white hover:text-black transition-colors duration-200 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1">
                         Rent This Camera
@@ -99,7 +99,7 @@
 </div>
 
 <!-- Rental Modal -->
-@if(auth()->user()->role == 'customer' && $camera->status == 'tersedia')
+@if(auth()->user()->role == 'customer' && $camera->status == 'available')
 <div id="modal-rent" class="hidden fixed z-50 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
     <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
         <div class="fixed inset-0 bg-white bg-opacity-90 transition-opacity backdrop-blur-sm" aria-hidden="true" onclick="document.getElementById('modal-rent').classList.add('hidden')"></div>

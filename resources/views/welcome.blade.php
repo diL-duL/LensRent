@@ -47,7 +47,7 @@
                         View Detail &rarr;
                     </a>
                     @if(auth()->user()->role == 'customer')
-                        @if($camera->status == 'tersedia')
+                        @if($camera->status == 'available')
                             <button onclick="document.getElementById('modal-{{ $camera->id }}').classList.remove('hidden')" class="w-full border-2 border-black bg-black text-white text-lg font-bold uppercase tracking-widest py-3 hover:bg-white hover:text-black transition-colors duration-200 mb-2">
                                 Rent Now
                             </button>
@@ -78,7 +78,7 @@
     </div>
 
     <!-- Modal Sewa (Brutalist style) -->
-    @if($camera->status == 'tersedia')
+    @if($camera->status == 'available')
     <div id="modal-{{ $camera->id }}" class="hidden fixed z-50 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
         <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
             <div class="fixed inset-0 bg-white bg-opacity-90 transition-opacity backdrop-blur-sm" aria-hidden="true" onclick="document.getElementById('modal-{{ $camera->id }}').classList.add('hidden')"></div>

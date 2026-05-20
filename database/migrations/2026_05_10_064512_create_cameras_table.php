@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('brand');
             $table->integer('price_per_day');
-            $table->string('status')->default('tersedia'); // tersedia, disewa
+            $table->string('status')->default('available'); // available, rented
             $table->text('description')->nullable();
             $table->timestamps();
         });

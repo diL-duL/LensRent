@@ -21,13 +21,13 @@ class RentalController extends Controller
 
         $camera = Camera::findOrFail($request->camera_id);
         
-        if ($camera->status !== 'tersedia') {
-            return back()->with('error', 'Kamera sedang tidak tersedia.');
+        if ($camera->status !== 'available') {
+            return back()->with('error', 'Camera is currently not available.');
         }
 
         $start = Carbon::parse($request->start_date);
         $end = Carbon::parse($request->end_date);
-        $days = $start->diffInDays($end) + 1; // inclusive
+        $days = $start->diffInDays($end) + 1;
         $total_price = $days * $camera->price_per_day;
 
         $rental = Rental::create([
@@ -36,20 +36,18 @@ class RentalController extends Controller
             'start_date' => $request->start_date,
             'end_date' => $request->end_date,
             'total_price' => $total_price,
-            'status' => 'pending' // pending payment
+            'status' => 'pending'
         ]);
 
-        // Kamera belum disewa sepenuhnya sampai di approve / dibayar, 
-        // tapi kita set disewa agar tidak ada double booking
-        $camera->update(['status' => 'disewa']);
+        $camera->update(['status' => 'rented']);
 
-        return redirect()->route('dashboard')->with('success', 'Berhasil booking kamera. Silakan upload bukti pembayaran.');
+        return redirect()->route('dashboard')->with('success', 'Camera has been successfully booked. Please upload proof of payment.');
     }
 
     public function returnCamera(Request $request, Rental $rental)
     {
         if ($rental->status === 'completed') {
-            return back()->with('error', 'Kamera sudah dikembalikan sebelumnya.');
+            return back()->with('error', 'Camera has already been returned.');
         }
 
         $actual_return_date = Carbon::now();
@@ -58,7 +56,6 @@ class RentalController extends Controller
         $late_fine = 0;
         if ($actual_return_date->startOfDay()->gt($end_date->startOfDay())) {
             $days_late = $end_date->diffInDays($actual_return_date->startOfDay());
-            // Denda harian = harga sewa per hari
             $late_fine = $days_late * $rental->camera->price_per_day;
         }
 
@@ -68,8 +65,8 @@ class RentalController extends Controller
             'status' => 'completed'
         ]);
 
-        $rental->camera->update(['status' => 'tersedia']);
+        $rental->camera->update(['status' => 'available']);
 
-        return back()->with('success', 'Kamera berhasil dikembalikan. Total denda: Rp ' . number_format($late_fine, 0, ',', '.'));
+        return back()->with('success', 'Camera has been successfully returned. Total fine: Rp ' . number_format($late_fine, 0, ',', '.'));
     }
 }

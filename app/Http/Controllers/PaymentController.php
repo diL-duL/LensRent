@@ -23,7 +23,7 @@ class PaymentController extends Controller
             ['payment_proof' => $path, 'status' => 'pending']
         );
 
-        return back()->with('success', 'Bukti pembayaran berhasil diupload. Menunggu verifikasi admin.');
+        return back()->with('success', 'Proof of payment has been successfully uploaded. Awaiting admin verification.');
     }
 
     public function verify(Request $request, Payment $payment)
@@ -37,11 +37,10 @@ class PaymentController extends Controller
         if ($request->status === 'verified') {
             $payment->rental->update(['status' => 'approved']);
         } else {
-            // Jika reject, batalkan penyewaan dan buat kamera tersedia kembali
             $payment->rental->update(['status' => 'rejected']);
-            $payment->rental->camera->update(['status' => 'tersedia']);
+            $payment->rental->camera->update(['status' => 'available']);
         }
 
-        return back()->with('success', 'Status pembayaran berhasil diupdate.');
+        return back()->with('success', 'Payment status has been successfully updated.');
     }
 }
