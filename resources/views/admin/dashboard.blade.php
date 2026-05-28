@@ -4,8 +4,8 @@
 <div class="mb-10 border-b-4 border-black pb-4 flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
     <h2 class="text-4xl font-black uppercase tracking-tight">Command Center</h2>
     <div class="flex space-x-4">
-        <a href="{{ route('categories.index') }}" class="border-2 border-black bg-white px-6 py-2 text-sm font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1">Categories</a>
-        <a href="{{ route('cameras.index') }}" class="border-2 border-black bg-white px-6 py-2 text-sm font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1">Cameras</a>
+        <a href="{{ route('admin.categories.index') }}" class="border-2 border-black bg-white px-6 py-2 text-sm font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1">Categories</a>
+        <a href="{{ route('admin.cameras.index') }}" class="border-2 border-black bg-white px-6 py-2 text-sm font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1">Cameras</a>
     </div>
 </div>
 

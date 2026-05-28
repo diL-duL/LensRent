@@ -3,13 +3,13 @@
 @section('content')
 <div class="mb-10 border-b-4 border-black pb-4 flex justify-between items-end">
     <h2 class="text-4xl font-black uppercase tracking-tight">Edit Category</h2>
-    <a href="{{ route('categories.index') }}" class="text-sm font-bold uppercase tracking-widest hover:bg-black hover:text-white border-2 border-black px-4 py-2 transition-colors">
+    <a href="{{ route('admin.categories.index') }}" class="text-sm font-bold uppercase tracking-widest hover:bg-black hover:text-white border-2 border-black px-4 py-2 transition-colors">
         &larr; Back
     </a>
 </div>
 
 <div class="max-w-2xl border-4 border-black bg-white p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
-    <form action="{{ route('categories.update', $category->id) }}" method="POST" class="space-y-6">
+    <form action="{{ route('admin.categories.update', $category->id) }}" method="POST" class="space-y-6">
         @csrf
         @method('PUT')
         <div>

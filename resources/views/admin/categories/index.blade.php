@@ -12,7 +12,7 @@
     <div class="md:col-span-1">
         <div class="border-4 border-black bg-white p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] sticky top-28">
             <h3 class="text-2xl font-black uppercase tracking-tight mb-6 border-b-4 border-black pb-2">Add New</h3>
-            <form action="{{ route('categories.store') }}" method="POST" class="space-y-6">
+            <form action="{{ route('admin.categories.store') }}" method="POST" class="space-y-6">
                 @csrf
                 <div>
                     <label class="block text-sm font-bold uppercase tracking-widest mb-2">Category Name</label>
@@ -50,10 +50,10 @@
                             </td>
                             <td class="py-4 px-4 text-right">
                                 <div class="flex justify-end items-center gap-2">
-                                    <a href="{{ route('categories.edit', $category->id) }}" class="border-2 border-black bg-white text-black px-4 py-2 text-xs font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-colors inline-block">
+                                    <a href="{{ route('admin.categories.edit', $category->id) }}" class="border-2 border-black bg-white text-black px-4 py-2 text-xs font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-colors inline-block">
                                         Edit
                                     </a>
-                                    <form action="{{ route('categories.destroy', $category->id) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus?');" class="inline-block m-0">
+                                    <form action="{{ route('admin.categories.destroy', $category->id) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus?');" class="inline-block m-0">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="border-2 border-black bg-white text-black px-4 py-2 text-xs font-bold uppercase tracking-widest hover:bg-red-600 hover:text-white hover:border-red-600 transition-colors">
