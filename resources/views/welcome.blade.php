@@ -63,7 +63,7 @@
                     </a>
                 @endauth
 
-                {{-- View Image button - opens Google Images search in new tab --}}
+                <!-- View Image button - opens Google Images search in new tab -->
                 <a href="https://www.google.com/search?tbm=isch&q={{ urlencode($camera->name . ' ' . $camera->brand . ' camera') }}"
                    target="_blank"
                    rel="noopener noreferrer"
