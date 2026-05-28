@@ -34,8 +34,8 @@ Route::middleware('auth')->group(function () {
 Route::middleware(['auth', 'can:admin'])->prefix('admin')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'adminDashboard'])->name('admin.dashboard');
     
-    Route::resource('categories', CategoryController::class);
-    Route::resource('cameras', CameraController::class);
+    Route::resource('categories', CategoryController::class)->names('admin.categories');
+    Route::resource('cameras', CameraController::class)->names('admin.cameras');
     
     Route::post('/payments/{payment}/verify', [PaymentController::class, 'verify'])->name('admin.payments.verify');
     Route::post('/rentals/{rental}/return', [RentalController::class, 'returnCamera'])->name('admin.rentals.return');
